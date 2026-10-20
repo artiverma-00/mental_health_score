@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Check-In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">+</span>
+        <span>Wellbeing<span class="brand-dot">.</span></span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>YOUR ANSWERS AREN'T SAVED</span>
+        <span class="mono">A MOMENT FOR YOU</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">A CHECK-IN FOR YOU</p>
+          <h1>How are you<br><em>feeling lately?</em></h1>
+          <p class="hero-copy">Share a little about your daily routine and get a simple reflection on your wellbeing. There are no right or wrong answers, and this check-in only takes a few minutes.</p>
+        </div>
+        <div class="hero-note">
+          <span class="note-line"></span>
+          <span>TAKE YOUR TIME<br><b>YOUR ANSWERS ARE NOT SAVED</b></span>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <form id="prediction-form" novalidate>
+          <section class="panel">
+            <div class="panel-head">
+              <div><span class="section-number">01</span><h2>A little about you</h2></div>
+              <span class="panel-label">GETTING TO KNOW YOU</span>
+            </div>
+            <div class="field-grid three">
+              <label class="field">
+                <span>Age <small>10–100</small></span>
+                <input id="age" name="age" type="number" min="10" max="100" value="21" required>
+              </label>
+              <label class="field">
+                <span>Gender</span>
+                <select id="gender" name="gender" required><option>Female</option><option>Male</option></select>
+              </label>
+              <label class="field">
+                <span>Country</span>
+                <select id="country" name="country" required>
+                  <option>India</option><option>USA</option><option>Canada</option><option>Australia</option><option>UK</option><option>Germany</option><option>Mexico</option><option>Turkey</option><option>France</option><option>Other</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Academic level</span>
+                <select id="academic_level" name="academic_level" required><option>Undergraduate</option><option>Graduate</option><option>High School</option></select>
+              </label>
+              <label class="field">
+                <span>Most-used platform</span>
+                <select id="most_used_platform" name="most_used_platform" required>
+                  <option>Instagram</option><option>Facebook</option><option>LinkedIn</option><option>Snapchat</option><option>Twitter</option><option>YouTube</option><option>TikTok</option><option>LINE</option><option>KakaoTalk</option><option>VKontakte</option><option>WhatsApp</option><option>WeChat</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Primary purpose</span>
+                <select id="purpose_of_use" name="purpose_of_use" required><option>Entertainment</option><option>Networking</option><option>Education</option><option>News</option></select>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div><span class="section-number">02</span><h2>Your day-to-day</h2></div>
+              <span class="panel-label">ANSWER AS BEST YOU CAN</span>
+            </div>
+            <div class="field-grid two">
+              <label class="field range-field">
+                <span>Social media usage <output id="avg_daily_usage_hours_value">4 hrs</output></span>
+                <input id="avg_daily_usage_hours" name="avg_daily_usage_hours" type="range" min="0" max="24" step="0.5" value="4">
+                <span class="range-labels"><small>0 hrs</small><small>24 hrs</small></span>
+              </label>
+              <label class="field">
+                <span>Daily phone unlocks <small>0+</small></span>
+                <input id="daily_unlocks" name="daily_unlocks" type="number" min="0" value="35" required>
+              </label>
+              <label class="field range-field">
+                <span>Study hours <output id="study_hours_value">5 hrs</output></span>
+                <input id="study_hours" name="study_hours" type="range" min="0" max="24" step="0.5" value="5">
+                <span class="range-labels"><small>0 hrs</small><small>24 hrs</small></span>
+              </label>
+              <label class="field range-field">
+                <span>Physical activity <output id="physical_activity_hours_value">1 hr</output></span>
+                <input id="physical_activity_hours" name="physical_activity_hours" type="range" min="0" max="24" step="0.5" value="1">
+                <span class="range-labels"><small>0 hrs</small><small>24 hrs</small></span>
+              </label>
+              <label class="field range-field">
+                <span>Sleep per night <output id="sleep_hours_per_night_value">7 hrs</output></span>
+                <input id="sleep_hours_per_night" name="sleep_hours_per_night" type="range" min="0" max="24" step="0.5" value="7">
+                <span class="range-labels"><small>0 hrs</small><small>24 hrs</small></span>
+              </label>
+              <label class="field">
+                <span>Current stress level</span>
+                <select id="stress_level" name="stress_level" required><option>Medium</option><option>Low</option><option>High</option><option>Very High</option></select>
+              </label>
+            </div>
+          </section>
+
+          <div class="form-actions">
+            <button class="button primary" type="submit"><span>Check my mental wellbeing</span><b>→</b></button>
+            <button class="button secondary" type="button" id="sample-button">Fill in an example</button>
+            <button class="text-button" type="reset">Clear answers</button>
+          </div>
+          <p id="error-message" class="error-message" role="alert"></p>
+        </form>
+
+        <aside class="result-panel" aria-live="polite">
+          <div class="result-kicker"><span class="pulse"></span> YOUR WELLBEING</div>
+          <div id="empty-result" class="result-empty">
+            <div class="empty-icon">◎</div>
+            <h3>Your check-in<br>will appear here.</h3>
+            <p>When you're ready, answer the questions and select <b>Check my mental wellbeing</b> to see your result.</p>
+          </div>
+          <div id="score-result" class="score-result hidden">
+            <p class="score-label">YOUR CHECK-IN RESULT</p>
+            <div class="score-value"><strong id="score">—</strong><span>/ 10</span></div>
+            <div class="score-meter"><span id="score-meter-fill"></span></div>
+            <p id="score-summary" class="score-summary"></p>
+            <div class="result-divider"></div>
+            <p class="result-footnote">This check-in is for general reflection and isn't a diagnosis. If you're concerned about how you're feeling, consider talking with someone you trust or a qualified mental health professional.</p>
+            <button class="button outline" type="button" id="new-assessment">Start a new check-in <b>↗</b></button>
+          </div>
+          <div class="result-footer"><span>BE KIND TO YOURSELF</span><code>ONE STEP AT A TIME</code></div>
+        </aside>
+      </div>
+    </main>
+    <footer><span>A MOMENT TO CHECK IN WITH YOURSELF</span><span>YOUR ANSWERS AREN'T SAVED</span></footer>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
