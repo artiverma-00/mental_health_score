@@ -1,4 +1,4 @@
-const API_base = "http://127.0.0.1:8000";
+const API_base = "https://mental-health-score-qx0v.onrender.com";
 const form = document.getElementById("prediction-form");
 const errorMessage = document.getElementById("error-message");
 const emptyResult = document.getElementById("empty-result");
